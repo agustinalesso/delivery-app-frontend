@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IUsuario } from 'src/app/interfaces/usuario.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { GalletitaService } from 'src/app/services/galletita.service';
 import Swal from 'sweetalert2';
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ProfileComponent implements OnInit {
 
+  usuario: IUsuario;
+
   constructor(
     private _auth: AuthService,
     private _galletita: GalletitaService,
@@ -19,6 +22,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.usuario = this._galletita.getCookie('_lg');
   }
 
   logout(){

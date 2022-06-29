@@ -5,7 +5,7 @@ export interface IUsuario {
     direccion: string,
     telefono?: string,
     genero?: string,
-    fecha_nacimiento?: Date,
+    fecha_nacimiento?: string,
     google_uid?: string,
     imagen_perfil?: string,
     password?: string,

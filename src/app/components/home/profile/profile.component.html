@@ -1,11 +1,13 @@
 <div class="w-full flex flex-row justify-center items-center h-96 rounded-lg shadow-md" style="background:url('assets/img/bg/profile-bg.webp') no-repeat;background-size:cover;">
     <div class="w-10/12 flex flex-row justify-start items-center gap-5">
         <img class="border-[6px] shadow-xl border-white w-44 h-44 rounded-full object-cover" src="assets/icon/anonymous.png" />
-        <div class="flex flex-col flex-grow-0">
+        <div class="flex flex-col">
             <span class="text-5xl text-gray-50 font-bold">
-                Agustín Alesso
+                {{usuario.nombre}} {{usuario.apellido}}
             </span>
-            <button (click)="logout()" class="daisy-btn-sm daisy-btn-primary">Cerrar sesión</button>
+            <div class="w-auto mt-4">
+                <button (click)="logout()" class="daisy-btn-sm runded-sm daisy-btn-primary">Cerrar sesión</button>
+            </div>
         </div>
     </div>
 </div>
