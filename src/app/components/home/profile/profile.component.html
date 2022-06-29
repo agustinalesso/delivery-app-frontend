@@ -1,0 +1,23 @@
+<div class="w-full flex flex-row justify-center items-center h-96 rounded-lg shadow-md" style="background:url('assets/img/bg/profile-bg.webp') no-repeat;background-size:cover;">
+    <div class="w-10/12 flex flex-row justify-start items-center gap-5">
+        <img class="border-[6px] shadow-xl border-white w-44 h-44 rounded-full object-cover" src="assets/icon/anonymous.png" />
+        <div class="flex flex-col flex-grow-0">
+            <span class="text-5xl text-gray-50 font-bold">
+                Agustín Alesso
+            </span>
+            <button (click)="logout()" class="daisy-btn-sm daisy-btn-primary">Cerrar sesión</button>
+        </div>
+    </div>
+</div>
+    
+<div class="daisy-tabs mt-10">
+    <a [routerLink]="['my-data']" [routerLinkActive]="'daisy-tab-active'" class="daisy-tab daisy-tab-lg daisy-tab-lifted">Mis datos</a> 
+    <a [routerLink]="['my-purchases']" [routerLinkActive]="'daisy-tab-active'" class="daisy-tab daisy-tab-lg daisy-tab-lifted">Mis compras</a> 
+    <a [routerLink]="['advanced-data']" [routerLinkActive]="'daisy-tab-active'" class="daisy-tab daisy-tab-lg daisy-tab-lifted">Avanzado</a>
+</div>
+<div class="w-full bg-white p-10 rounded-b-lg shadow-md ml-[1px]">
+    <router-outlet></router-outlet>
+</div>
+
+
+

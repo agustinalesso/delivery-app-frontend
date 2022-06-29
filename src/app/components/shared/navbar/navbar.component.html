@@ -1,0 +1,74 @@
+<div class="w-full sticky top-0 z-10 py-4 bg-red-600">
+    <div class="w-11/12 md:w-10/12 xl:w-9/12 mx-auto flex flex-row-reverse lg:flex-row justify-between items-center">
+        <div>
+            <span class="text-4xl italic text-gray-800"><span class="text-gray-100">SJ</span>Delivery</span>
+        </div>
+        <div>
+            <nav class="hidden lg:block">
+                <ul>
+                    <li [routerLink]="['start']" [routerLinkActive]="'active'" class="menu-item">Inicio</li>
+                    <li [routerLink]="['food-houses']" [routerLinkActive]="'active'" class="menu-item">Casas</li>
+                    <li [routerLink]="['my-orders']" [routerLinkActive]="'active'" class="menu-item">Mis pedidos</li>
+                    <li class="cerrar-sesion tippy-buscar flex gap-2">
+                        <input type="text" #searchText placeholder="Buscar" (keyup)="onSearch($event)" class="sjd-input-buscar" *ngIf="toggleSearch">
+                        <svg (click)="toggleSearch = !toggleSearch" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </li>
+                    <li [routerLink]="['/admin']" *ngIf="esAdministrador" class="cerrar-sesion flex items-center gap-2">
+                        Administrador
+                        <img src="assets/icon/shop-icon.svg" class="h-6" alt="shop">
+                    </li>
+                    <li [routerLink]="['start-selling']" *ngIf="haySesion && !esAdministrador" class="cerrar-sesion tippy-vendedor flex gap-2">
+                        <img src="assets/icon/shop-icon.svg" class="h-6" alt="shop">
+                    </li>
+                    <li *ngIf="haySesion" [routerLink]="['profile']" class="cerrar-sesion tippy-perfil flex gap-2">
+                        <span class="font-semibold">{{usuarioNombre}}</span>
+                        <div class="daisy-avatar">
+                            <div class="w-6 daisy-mask daisy-mask-hexagon rounded-sm">
+                              <img src="assets/icon/anonymous.png" />
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="!haySesion" [routerLink]="['/login']" class="cerrar-sesion tippy-iniciarSesion">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                        </svg>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Mobile -->
+            <nav class="block lg:hidden">
+                <div (click)="onToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </div>
+                <div *ngIf="toggleMobileMenu" class="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50">
+                    <div class="relative w-[300px] h-screen bg-red-600 border-r-8 border-r-red-800 shadow-xl">
+
+                        <div (click)="onToggle()" class="absolute top-5 right-5 w-10 h-10 rounded-full shadow-lg shadow-red-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+
+                        <ul class="flex flex-col justify-center h-screen absolute">
+                            <li (click)="onToggle()" [routerLink]="['start']" class="text-xl text-gray-100 px-4 py-2">Inicio</li>
+                            <li (click)="onToggle()" [routerLink]="['food-houses']" class="text-xl text-gray-100 px-4 py-2">Casas</li>
+                            <li (click)="onToggle()" [routerLink]="['my-orders']" class="text-xl text-gray-100 px-4 py-2">Mis Pedidos</li>
+                            <li (click)="onToggle()"*ngIf="haySesion" [routerLink]="['profile']" class="cerrar-sesion flex flex-row-reverse justify-end gap-2 mt-2">
+                                <span class="font-semibold">{{usuarioNombre}}</span>
+                                <div class="daisy-avatar">
+                                    <div class="w-6 daisy-mask daisy-mask-hexagon rounded-sm">
+                                      <img src="https://api.lorem.space/image/face?hash=55350" />
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="w-full h-screen flex flex-col items-center justify-center overflow-hidden sjd-login-bg">
+    <div class="bg-white py-10 shadow-lg w-11/12 md:w-10/12 lg:w-6/12 xl:w-[550px] rounded-md">
+        <div [routerLink]="['/home']" class="flex flex-row items-center justify-center mb-4 cursor-pointer">
+            <img class="h-20 float-left mr-4" src="assets/logo/sjdlogo.png" alt="logo">
+            <span class="text-5xl italic text-gray-800"><span class="text-red-500">SJ</span>Delivery</span>
+        </div>
+        <h1 class="text-center my-6">Inicia Sesión</h1>
+        <!-- Formulario de login -->
+        <form #formulario="ngForm" (submit)="onSubmit(formulario)" class="grid grid-cols-1 sjd-register-form">
+            <input required [(ngModel)]="nombre" name="email" type="email" placeholder="Correo electrónico">
+            <input required [(ngModel)]="password" name="password" type="password" placeholder="Contraseña">
+            <button class="sjd-button-primary" type="submit">Iniciar Sesión</button>
+            <div class="flex justify-center mt-4 flex-col items-center gap-6">
+                <span [routerLink]="['/register']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">¿No tienes una cuenta?</span>
+                <span [routerLink]="['/home']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">Ir al inicio</span>
+            </div>
+        </form> 
+    </div>
+</div>

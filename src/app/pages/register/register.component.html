@@ -1,0 +1,23 @@
+<div class="w-full h-screen flex flex-col items-center justify-center overflow-hidden sjd-reg-bg">
+    <div class="bg-white py-10 shadow-lg w-11/12 md:w-10/12 lg:w-6/12 xl:w-[550px] rounded-md">
+        <div [routerLink]="['/home']" class="flex flex-row items-center justify-center mb-4 cursor-pointer">
+            <img class="h-20 float-left mr-4" src="assets/logo/sjdlogo.png" alt="logo">
+            <span class="text-5xl italic text-gray-800"><span class="text-red-500">SJ</span>Delivery</span>
+        </div>
+        <h1 class="text-center my-6">Ingresa tus datos en el formulario</h1>
+        <!-- Formulario de registro -->
+        <form #formulario="ngForm" (submit)="onSubmit(formulario)" class="grid grid-cols-1 sjd-register-form">
+            <input required [(ngModel)]="usuario.nombre" name="nombre" type="text" placeholder="Nombre">
+            <input required [(ngModel)]="usuario.apellido" name="apellido" type="text" placeholder="Apellido">
+            <input required [(ngModel)]="usuario.email" name="email" type="email" placeholder="Correo electrónico">
+            <input required [(ngModel)]="usuario.direccion" name="direccion" type="address" placeholder="Dirección (ej: Francisco Angeloni 123)">
+            <input required [(ngModel)]="usuario.password" name="password" type="password" placeholder="Contraseña">
+            <input required [(ngModel)]="usuario.passwordconf" name="passwordconf" type="password" placeholder="Confirmar contraseña">
+            <button class="sjd-button-primary" type="submit">Registrarse</button>
+            <div class="flex justify-center mt-4 flex-col items-center gap-6">
+                <span [routerLink]="['/login']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">¿Ya tienes cuenta? Inicia sesión</span>
+                <span [routerLink]="['/home']" class="hover:text-red-600 transition-all duration-300 cursor-pointer">Ir al inicio</span>
+            </div>
+        </form> 
+    </div>
+</div>

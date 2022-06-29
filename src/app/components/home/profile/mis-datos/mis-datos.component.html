@@ -1,0 +1,86 @@
+<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+    <p class="italic mb-4 text-gray-500">
+        Los campos marcados con <strong class="text-red-600">*</strong> son necesarios para que las casas de delivery se pongan en contacto contigo
+    </p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+              <span class="daisy-label-text">Nombre<span class="text-red-600 font-bold">*</span></span>
+            </label>
+            <input required [(ngModel)]="usuario.nombre" name="nombre" type="text" placeholder="Nombre" class="daisy-input daisy-input-bordered w-full" />
+        </div>
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+              <span class="daisy-label-text">Apellido<span class="text-red-600 font-bold">*</span></span>
+            </label>
+            <input required [(ngModel)]="usuario.apellido" name="apellido" type="text" placeholder="Appelido" class="daisy-input daisy-input-bordered w-full" />
+        </div>
+    
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+                <span class="daisy-label-text">Fecha de nacimiento</span>
+            </label>
+            <input [(ngModel)]="usuario.fecha_nacimiento" name="fechaNacimiento" type="date" class="daisy-input daisy-input-bordered w-full" />
+        </div>
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+                <span class="daisy-label-text">Género</span>
+            </label>
+            <select [(ngModel)]="usuario.genero" name="genero" class="daisy-select daisy-select-bordered">
+                <option disabled selected>Selecciona</option>
+                <option value="H">Hombre</option>
+                <option value="M">Mujer</option>
+                <option value="O">Otros</option>
+            </select>
+        </div>
+    
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+                <span class="daisy-label-text">Email</span>
+            </label>
+            <input [(ngModel)]="usuario.email" name="email" type="email" placeholder="email" class="daisy-input daisy-input-bordered w-full" disabled />
+        </div>
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+              <span class="daisy-label-text">Teléfono<span class="text-red-600 font-bold">*</span></span>
+            </label>
+            <input required [(ngModel)]="usuario.telefono" name="telefono" type="phone" placeholder="Teléfono" class="daisy-input daisy-input-bordered w-full" />
+        </div>
+    
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+              <span class="daisy-label-text">Dirección<span class="text-red-600 font-bold">*</span></span>
+            </label>
+            <input required [(ngModel)]="usuario.direccion" name="direccion" type="address" placeholder="Dirección" class="daisy-input daisy-input-bordered w-full" />
+        </div>
+        <div class="daisy-form-control w-full">
+            <label class="daisy-label">
+                <span class="daisy-label-text">Imágen de perfil</span>
+              </label>
+            <input class="form-control
+            block
+            w-full
+            px-3
+            py-2.5
+            text-base
+            font-normal
+            text-gray-700
+            bg-white bg-clip-padding
+            border border-solid border-gray-300
+            rounded
+            transition
+            ease-in-out
+            m-0
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile">
+        </div>
+    </div>
+    <div class="daisy-divider"></div> 
+    <div>
+        <button class="daisy-btn gap-2">
+            Guardar cambios
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+            </svg>
+          </button>
+    </div>
+</form>

@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'tippy.js/dist/tippy.css';
+
+.sjd-reg-bg{
+    background: url('assets/img/bg/register-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.sjd-login-bg{
+    background: url('assets/img/bg/login-bg.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.sjd-register-form{
+    @apply w-10/12 mx-auto;
+}
+
+.sjd-button-primary{
+    @apply text-white bg-red-500 py-3 rounded-md hover:bg-red-700 transition-all
+}
+
+input{
+    @apply p-3 border border-gray-400 rounded-md mb-2 hover:bg-gray-100 cursor-pointer
+}
+
+li.menu-item{
+    @apply float-left text-white py-2 px-2 cursor-pointer border-b border-b-transparent hover:border-b hover:border-b-white transition-all ml-1 font-semibold
+}
+li.menu-item.active{
+    @apply border-b border-b-white
+}
+.cerrar-sesion{
+    @apply float-left p-2 cursor-pointer bg-red-700 text-white hover:bg-red-800 transition-all rounded-md ml-3
+}
+
+.sjd-input-buscar{
+    @apply text-xs text-black h-6 border-0 rounded-sm focus:ring-0 focus:ring-offset-2 focus:ring-red-300 focus:ring-offset-transparent m-0
+}
+
+.sjd-titulo-pagina{
+    @apply text-2xl font-bold mb-4 text-red-500
+}
+
+.sjd-banner-background{
+    background: url('https://api.lorem.space/image/car?w=400&h=225') no-repeat center center;
+    background-size: cover;
+}
