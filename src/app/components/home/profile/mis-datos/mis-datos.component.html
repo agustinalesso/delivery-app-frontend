@@ -71,7 +71,10 @@
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="file" id="formFile">
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+            type="file" 
+            id="formFile"
+            (change)="uploadFile($event)">
         </div>
     </div>
     <div class="daisy-divider"></div> 

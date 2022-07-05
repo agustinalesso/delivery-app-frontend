@@ -8,6 +8,8 @@ import { AdminInicioComponent } from 'src/app/components/admin/admin-inicio/admi
 import { AdminMenuComponent } from '../../components/admin/admin-menu/admin-menu.component';
 import { AdminDeliveryComponent } from '../../components/admin/admin-delivery/admin-delivery.component';
 import { AdminReportsComponent } from '../../components/admin/admin-reports/admin-reports.component';
+import { ContainerComponent } from 'src/app/components/shared/container/container.component';
+import { TituloSeccionComponent } from '../../components/shared/titulo-seccion/titulo-seccion.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AdminReportsComponent } from '../../components/admin/admin-reports/admi
     AdminInicioComponent,
     AdminMenuComponent,
     AdminDeliveryComponent,
-    AdminReportsComponent
+    AdminReportsComponent,
+    ContainerComponent,
+    TituloSeccionComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideStorage, getStorage } from '@angular/fire/storage'
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
 
@@ -19,6 +20,7 @@ import { AuthGuardModule } from '@angular/fire/auth-guard';
     HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideStorage( () => getStorage() ),
     AuthGuardModule
   ],
   providers: [

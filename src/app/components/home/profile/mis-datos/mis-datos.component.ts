@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { IUsuario } from 'src/app/interfaces/usuario.interface';
 import { GalletitaService } from 'src/app/services/galletita.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage'
+import { finalize, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mis-datos',
@@ -13,10 +15,12 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class MisDatosComponent implements OnInit {
 
   usuario: IUsuario;
+  downloadURL : Observable<string>;
 
   constructor(
     private _galletita: GalletitaService,
-    private _usuario: UsuarioService
+    private _usuario: UsuarioService,
+    private storage: AngularFireStorage
   ){}
 
   get haySesion(){
@@ -34,6 +38,21 @@ export class MisDatosComponent implements OnInit {
         this._galletita.setCookie('_lg',response.usuarioActualizado);
       }
     })
+  }
+
+  uploadFile(event){
+    const file = event.target.files[0];
+    const filePath = `gs://deliverysanjusto.appspot.com/uploads/profile/${this.usuario.google_uid}-${file.name}`;
+    const ref = this.storage.refFromURL(filePath);
+    const task = ref.put(file);
+    task.snapshotChanges().pipe(
+      finalize( () => {
+        this.downloadURL = ref.getDownloadURL()
+        this.downloadURL.subscribe(response => {
+          
+        })
+      })
+    ).subscribe();
   }
 
 }
