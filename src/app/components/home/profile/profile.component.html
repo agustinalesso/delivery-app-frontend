@@ -1,6 +1,6 @@
 <div class="w-full flex flex-row justify-center items-center h-96 rounded-lg shadow-md" style="background:url('assets/img/bg/profile-bg.webp') no-repeat;background-size:cover;">
-    <div class="w-10/12 flex flex-row justify-start items-center gap-5">
-        <img class="border-[6px] shadow-xl border-white w-44 h-44 rounded-full object-cover" src="assets/icon/anonymous.png" />
+    <div *ngIf="usuario" class="w-10/12 flex flex-row justify-start items-center gap-5">
+        <img class="border-[6px] shadow-xl border-white w-44 h-44 rounded-full object-cover" [src]="usuario.imagen_perfil || 'assets/icon/anonymous.png'" />
         <div class="flex flex-col">
             <span class="text-5xl text-gray-50 font-bold">
                 {{usuario.nombre}} {{usuario.apellido}}

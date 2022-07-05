@@ -5,6 +5,7 @@ import { GalletitaService } from 'src/app/services/galletita.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage'
 import { finalize, Observable } from 'rxjs';
+import { GlobalProviderService } from 'src/app/services/globalProvider.service';
 
 @Component({
   selector: 'app-mis-datos',
@@ -20,6 +21,7 @@ export class MisDatosComponent implements OnInit {
   constructor(
     private _galletita: GalletitaService,
     private _usuario: UsuarioService,
+    private _globalProvider: GlobalProviderService,
     private storage: AngularFireStorage
   ){}
 
@@ -36,6 +38,8 @@ export class MisDatosComponent implements OnInit {
     this._usuario.actualizarDatosUsuario(this.usuario.google_uid,this.usuario).subscribe(response => {
       if(response.status === 200){
         this._galletita.setCookie('_lg',response.usuarioActualizado);
+        console.log(response);
+        this._globalProvider.sendUser(response.usuarioActualizado);
       }
     })
   }
@@ -49,7 +53,8 @@ export class MisDatosComponent implements OnInit {
       finalize( () => {
         this.downloadURL = ref.getDownloadURL()
         this.downloadURL.subscribe(response => {
-          
+          this.usuario.imagen_perfil = response;
+          this._globalProvider.sendNewProfileImage(response);
         })
       })
     ).subscribe();
