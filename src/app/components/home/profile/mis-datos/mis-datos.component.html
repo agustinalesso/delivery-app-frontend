@@ -1,4 +1,4 @@
-<form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
+<form *ngIf="usuario" #formulario="ngForm" (ngSubmit)="onSubmit(formulario)">
     <p class="italic mb-4 text-gray-500">
         Los campos marcados con <strong class="text-red-600">*</strong> son necesarios para que las casas de delivery se pongan en contacto contigo
     </p>
@@ -57,23 +57,11 @@
             <label class="daisy-label">
                 <span class="daisy-label-text">Imágen de perfil</span>
               </label>
-            <input class="form-control
-            block
-            w-full
-            px-3
-            py-2.5
-            text-base
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+            <input 
+            class="form-control block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
             type="file" 
             id="formFile"
+            accept=".jpg,.png,.jpeg,.gif"
             (change)="uploadFile($event)">
         </div>
     </div>

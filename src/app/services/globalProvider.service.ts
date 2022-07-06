@@ -6,6 +6,42 @@ import { IUsuario } from "../interfaces/usuario.interface";
 })
 export class GlobalProviderService {
 
+  constructor(){}
+
+  private usuarioDatosEventEmitter: EventEmitter<IUsuario> = new EventEmitter();
+
+  public escucharDatosUsuario = () => this.usuarioDatosEventEmitter;
+  public enviarDatosUsuario = (datosUsuario: IUsuario) => this.usuarioDatosEventEmitter.emit(datosUsuario);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import { EventEmitter, Injectable } from "@angular/core";
+import { IUsuario } from "../interfaces/usuario.interface";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GlobalProviderService {
+
   private data: any;
   private newProfileImageEmitter: EventEmitter<string> = new EventEmitter();
   private userEmitter: EventEmitter<IUsuario> = new EventEmitter();
@@ -22,4 +58,4 @@ export class GlobalProviderService {
   public sendUser = (usuario:IUsuario) => this.userEmitter.emit(usuario);
   
   constructor(){}
-}
+} */

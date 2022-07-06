@@ -22,11 +22,11 @@
                     <li [routerLink]="['start-selling']" *ngIf="haySesion && !esAdministrador" class="cerrar-sesion tippy-vendedor flex gap-2">
                         <img src="assets/icon/shop-icon.svg" class="h-6" alt="shop">
                     </li>
-                    <li *ngIf="haySesion" [routerLink]="['profile']" class="cerrar-sesion tippy-perfil flex gap-2">
-                        <span class="font-semibold">{{usuarioNombre}}</span>
+                    <li *ngIf="haySesion && usuario" [routerLink]="['profile']" class="cerrar-sesion tippy-perfil flex gap-2">
+                        <span class="font-semibold">{{usuario.nombre}}</span>
                         <div class="daisy-avatar">
                             <div class="w-6 daisy-mask daisy-mask-hexagon rounded-sm">
-                              <img [src]="usuarioImagen" />
+                              <img [src]="usuario.imagen_perfil" />
                             </div>
                         </div>
                     </li>
@@ -57,8 +57,8 @@
                             <li (click)="onToggle()" [routerLink]="['start']" class="text-xl text-gray-100 px-4 py-2">Inicio</li>
                             <li (click)="onToggle()" [routerLink]="['food-houses']" class="text-xl text-gray-100 px-4 py-2">Casas</li>
                             <li (click)="onToggle()" [routerLink]="['my-orders']" class="text-xl text-gray-100 px-4 py-2">Mis Pedidos</li>
-                            <li (click)="onToggle()"*ngIf="haySesion" [routerLink]="['profile']" class="cerrar-sesion flex flex-row-reverse justify-end gap-2 mt-2">
-                                <span class="font-semibold">{{usuarioNombre}}</span>
+                            <li (click)="onToggle()"*ngIf="haySesion && usuario" [routerLink]="['profile']" class="cerrar-sesion flex flex-row-reverse justify-end gap-2 mt-2">
+                                <span class="font-semibold">{{usuario.nombre}}</span>
                                 <div class="daisy-avatar">
                                     <div class="w-6 daisy-mask daisy-mask-hexagon rounded-sm">
                                       <img src="https://api.lorem.space/image/face?hash=55350" />

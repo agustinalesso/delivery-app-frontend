@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { IUsuario } from 'src/app/interfaces/usuario.interface';
 import { AuthService } from 'src/app/services/auth.service';
 import { GalletitaService } from 'src/app/services/galletita.service';
@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
 export class ProfileComponent implements OnInit, OnDestroy {
 
   usuario: IUsuario;
-  userListener$: Subscription = new Subscription();
+  usuarioSubscription: Subscription = new Subscription();
 
   constructor(
     private _auth: AuthService,
@@ -28,17 +28,23 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+
     const cookie = this._galletita.getCookie('_lg');
     this._usuario.obtenerDatosUsuario(cookie.google_uid).subscribe( response => {
       this.usuario = response;
     })
-    this.userListener$ = this._globalProvider.listenUser().asObservable().subscribe( response => {
-      this.usuario = response;
-    } );
+    
+    this.usuarioSubscription = this._globalProvider
+      .escucharDatosUsuario()
+      .asObservable()
+      .subscribe( respuesta => {
+        this.usuario = respuesta;
+      })
+
   }
 
   ngOnDestroy(): void {
-    this.userListener$.unsubscribe();
+    this.usuarioSubscription.unsubscribe();
   }
 
   logout(){

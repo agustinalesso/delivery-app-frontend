@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IShopData } from 'src/app/interfaces/shop.interface';
 import { IUsuario } from 'src/app/interfaces/usuario.interface';
@@ -14,7 +15,17 @@ import { ShopService } from 'src/app/services/shop.service';
 export class AdminInicioComponent implements OnInit {
 
   usuario: IUsuario;
-  shop: IShopData;
+  shop: IShopData = {
+    nombre: '',
+    descripcion: '',
+    direccion: '',
+    telefono: '',
+    sitio_web: '',
+    facebook_url: '',
+    instagram_url: '',
+    banner_imagen_url: '',
+    perfil_imagen_url: '',
+  }
 
   constructor(
     private _galletita: GalletitaService,
@@ -25,9 +36,18 @@ export class AdminInicioComponent implements OnInit {
     this.usuario = this._galletita.getCookie('_lg');
     if(this.usuario){
       this._shop.getShopData(this.usuario.google_uid).subscribe( (response:any) => {
-        console.log(response);
+        if(response.myshop){
+          this.shop = response.myshop;
+        }
       })
     }
+  }
+
+  enviarFormulario(formulario: NgForm){
+    if(formulario.invalid) return;
+    console.log(this.shop)
+    //Logica para enviar al backend
+    // => ...
   }
 
 }

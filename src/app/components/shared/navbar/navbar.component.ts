@@ -2,10 +2,9 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { IUsuario } from 'src/app/interfaces/usuario.interface';
-import { AuthService } from 'src/app/services/auth.service';
 import { GalletitaService } from 'src/app/services/galletita.service';
 import { GlobalProviderService } from 'src/app/services/globalProvider.service';
-import Swal from 'sweetalert2';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import tippy from 'tippy.js';
 
 @Component({
@@ -16,16 +15,16 @@ import tippy from 'tippy.js';
 })
 export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
 
+  usuario: IUsuario;
   esAdministrador: boolean = false;
-  usuarioNombre: string;
-  usuarioImagen: string = 'assets/icon/anonymous.png';
   toggleSearch: boolean = false;
   toggleMobileMenu: boolean = false;
-  userSubscription$ : Subscription = new Subscription();
+  userSubscription : Subscription = new Subscription();
 
   constructor(
     private _galletita: GalletitaService,
     private router: Router,
+    private _usuario: UsuarioService,
     private _globalProvider: GlobalProviderService
   ){}
 
@@ -36,15 +35,25 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     if(this.haySesion){
       const cookie: IUsuario = this._galletita.getCookie('_lg');
-      this.esAdministrador = cookie.roles?.filter(r => r === 'Administrador').length === 1;
-      this.usuarioNombre = cookie.nombre;
-      this.usuarioImagen = cookie.imagen_perfil;
-      this.userSubscription$ = this._globalProvider.listenUser().asObservable().subscribe(response => {
-        this.usuarioNombre = response.nombre;
-        this.usuarioImagen = response.imagen_perfil;
+
+      this._usuario.obtenerDatosUsuario(cookie.google_uid).subscribe(response => {
+        this.usuario = response;
+        this.esAdministrador = this.usuario.roles?.filter(r => r === 'Administrador').length === 1;
       })
+
+      this.userSubscription = this._globalProvider
+        .escucharDatosUsuario()
+        .asObservable()
+        .subscribe( response => {
+          this.usuario = response;
+        })
+
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -77,10 +86,6 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
   
-  ngOnDestroy(): void {
-    this.userSubscription$.unsubscribe();
-  }
-
   onSearch(event:any){
     if(event.key === 'Enter'){
       const queryParams = { query : event.target.value };

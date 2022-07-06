@@ -10,6 +10,7 @@ import { AdminDeliveryComponent } from '../../components/admin/admin-delivery/ad
 import { AdminReportsComponent } from '../../components/admin/admin-reports/admin-reports.component';
 import { ContainerComponent } from 'src/app/components/shared/container/container.component';
 import { TituloSeccionComponent } from '../../components/shared/titulo-seccion/titulo-seccion.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TituloSeccionComponent } from '../../components/shared/titulo-seccion/t
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule
   ]
 })
 export class AdminModule { }
