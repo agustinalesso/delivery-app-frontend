@@ -10,6 +10,8 @@ import { provideStorage, getStorage } from '@angular/fire/storage'
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TitleStrategy } from '@angular/router';
+import { PageTitleStrategy } from './services/titleStrategy.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    { provide: TitleStrategy, useClass: PageTitleStrategy }
   ],
   bootstrap: [AppComponent]
 })

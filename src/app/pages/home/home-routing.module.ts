@@ -23,25 +23,30 @@ const routes: Routes = [
     children: [
       {
         path: 'start', 
-        component: StartComponent
+        component: StartComponent,
+        title: 'Inicio',
       },
       {
         path: 'food-houses', 
-        component: FoodHousesComponent
+        component: FoodHousesComponent,
+        title: 'Casas de comida',
       },
       {
         path: 'my-orders', 
-        component: MyOrdersComponent
+        component: MyOrdersComponent,
+        title: 'Mis ordenes',
       },
       {
         path: 'search', 
-        component: BuscarComponent
+        component: BuscarComponent,
+        title: 'Buscar',
       },
       {
         path: 'profile', 
         component: ProfileComponent,
         canActivate: [AngularFireAuthGuard], 
         data: { authGuardPipe: irALogin},
+        title: 'Perfil',
         children: [
           { path: '', pathMatch: 'full', redirectTo: 'my-data'},
           { path:'my-data', component: MisDatosComponent},
@@ -54,6 +59,7 @@ const routes: Routes = [
         component: StartSellingComponent,
         canActivate: [AngularFireAuthGuard], 
         data: { authGuardPipe: irALogin},
+        title: 'Comienza a vender',
       },
     ]
   }

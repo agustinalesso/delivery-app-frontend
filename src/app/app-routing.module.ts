@@ -9,21 +9,25 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { 
     path: 'home', 
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomeModule )
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomeModule ),
+    title: 'Inicio',
   },
   { 
     path: 'register', 
-    loadChildren: () => import('./pages/register/register.module').then( resp => resp.RegisterModule ) 
+    loadChildren: () => import('./pages/register/register.module').then( resp => resp.RegisterModule ),
+    title: 'Registro'
   },
   { 
     path: 'login', 
     data: { authGuardPipe: irAHome}, 
-    loadChildren: () => import('./pages/login/login.module').then( resp => resp.LoginModule ) 
+    loadChildren: () => import('./pages/login/login.module').then( resp => resp.LoginModule ),
+    title: 'Iniciar sesión'
   },
   {
     path: 'admin',
     canActivate: [AngularFireAuthGuard],
-    loadChildren: () => import('./pages/admin/admin.module').then( resp => resp.AdminModule )
+    loadChildren: () => import('./pages/admin/admin.module').then( resp => resp.AdminModule ),
+    title: 'Administración'
   }
 ];
 

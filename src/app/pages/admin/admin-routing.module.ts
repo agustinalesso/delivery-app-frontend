@@ -18,19 +18,23 @@ const routes: Routes = [
     children: [
       {
         path: 'start',
-        component: AdminInicioComponent
+        component: AdminInicioComponent,
+        title: 'Administración - Inicio',
       },
       {
         path: 'menu',
-        component: AdminMenuComponent
+        component: AdminMenuComponent,
+        title: 'Administración - Menu',
       },
       {
         path: 'delivery',
-        component: AdminDeliveryComponent
+        component: AdminDeliveryComponent,
+        title: 'Administración - Entregas',
       },
       {
         path: 'reports',
-        component: AdminReportsComponent
+        component: AdminReportsComponent,
+        title: 'Administración - Reportes',
       },
     ]
   }
