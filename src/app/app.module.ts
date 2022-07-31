@@ -9,6 +9,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage'
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { AuthGuardModule } from '@angular/fire/auth-guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthGuardModule } from '@angular/fire/auth-guard';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideStorage( () => getStorage() ),
-    AuthGuardModule
+    AuthGuardModule,
+    FontAwesomeModule,
   ],
   providers: [
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },

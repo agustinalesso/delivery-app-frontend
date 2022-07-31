@@ -11,6 +11,9 @@ import { AdminReportsComponent } from '../../components/admin/admin-reports/admi
 import { ContainerComponent } from 'src/app/components/shared/container/container.component';
 import { TituloSeccionComponent } from '../../components/shared/titulo-seccion/titulo-seccion.component';
 import { FormsModule } from '@angular/forms';
+import { ShopPreviewComponent } from '../../components/admin/shop-preview/shop-preview.component';
+import { ShopFormComponent } from '../../components/admin/shop-form/shop-form.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -22,12 +25,15 @@ import { FormsModule } from '@angular/forms';
     AdminDeliveryComponent,
     AdminReportsComponent,
     ContainerComponent,
-    TituloSeccionComponent
+    TituloSeccionComponent,
+    ShopPreviewComponent,
+    ShopFormComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,80 @@
+<form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="my-6 p-4 bg-gray-100 rounded-md">
+
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Nombre de tu empresa:</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.nombre" name="nombre" required type="text" placeholder="Ej: Cosas Ricas"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Dejanos una descripción:</span>
+    </label>
+    <textarea [(ngModel)]="shop.descripcion" name="descripcion" required
+      class="daisy-textarea daisy-textarea-primary w-full" placeholder="Describe tu empresa"></textarea>
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Tu dirección:</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.direccion" name="direccion" required type="address"
+      placeholder="Ej: Avenida Principal 123, Ciudad, Provincia"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Teléfono:</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.telefono" name="telefono" required type="phone" placeholder="Ej: +549-3498-123456"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Sitio web (opcional):</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.sitio_web" name="sitio_web" type="text" placeholder="Ej: www.misitio.com"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Facebook (opcional):</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.facebook_url" name="facebook_url" type="text" placeholder="Ej: facebook.com/MIUSUARIO"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Instagram (opcional):</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.instagram_url" name="instagram_url" type="text" placeholder="Ej: instagram.com/MIUSUARIO"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Correo electrónico (opcional):</span>
+    </label>
+    <input (change)="emitShopData($event)" [(ngModel)]="shop.email" type="email" name="email" placeholder="Ej: micorreo@miempresa.com"
+      class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
+  </div>
+  <div class="daisy-form-control w-full">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Banner (imagen):</span>
+    </label>
+    <input (change)="emitShopData($event)" #bannerImageRef
+      class="form-control block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      type="file" id="formBannerImage" accept=".jpg,.png,.jpeg,.gif" (change)="imageChangeHandler($event,'banner')" />
+  </div>
+  <div class="daisy-form-control w-full mb-4">
+    <label class="daisy-label">
+      <span class="daisy-label-text">Imagen de perfil:</span>
+    </label>
+    <input (change)="emitShopData($event)" #profileImageRef
+      class="form-control block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+      type="file" id="formProfileImage" accept=".jpg,.png,.jpeg,.gif" (change)="imageChangeHandler($event,'profile')" />
+  </div>
+
+  <button type="submit" class="daisy-btn">Guardar datos</button>
+
+</form>

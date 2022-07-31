@@ -26,7 +26,7 @@
                         <span class="font-semibold">{{usuario.nombre}}</span>
                         <div class="daisy-avatar">
                             <div class="w-6 daisy-mask daisy-mask-hexagon rounded-sm">
-                              <img [src]="usuario.imagen_perfil" />
+                              <img [src]="usuario.imagen_perfil || 'assets/icon/anonymous.png'" />
                             </div>
                         </div>
                     </li>

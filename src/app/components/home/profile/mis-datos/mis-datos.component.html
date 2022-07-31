@@ -57,12 +57,19 @@
             <label class="daisy-label">
                 <span class="daisy-label-text">Imágen de perfil</span>
               </label>
-            <input 
+            <input
+            #inputFileRef
             class="form-control block w-full px-3 py-2.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
             type="file" 
             id="formFile"
             accept=".jpg,.png,.jpeg,.gif"
-            (change)="uploadFile($event)">
+            (change)="markForUpload($event)">
+            <div *ngIf="usuario.imagen_perfil" class="flex justify-between items-center mt-4 p-2 bg-gray-200 rounded-md">
+                <img [src]="usuario.imagen_perfil || 'assets/icon/anonymous.png'" class="w-16 h-16 rounded-md object-cover" />
+                <div>
+                    <button (click)="removerImagenDePerfil()" class="daisy-btn daisy-btn-outline daisy-btn-error">Quitar imagen</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="daisy-divider"></div> 

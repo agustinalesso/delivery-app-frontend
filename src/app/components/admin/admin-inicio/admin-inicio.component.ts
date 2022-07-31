@@ -15,6 +15,7 @@ import { ShopService } from 'src/app/services/shop.service';
 export class AdminInicioComponent implements OnInit {
 
   usuario: IUsuario;
+  shopHasData: boolean = false;
   shop: IShopData = {
     nombre: '',
     descripcion: '',
@@ -37,17 +38,13 @@ export class AdminInicioComponent implements OnInit {
     if(this.usuario){
       this._shop.getShopData(this.usuario.google_uid).subscribe( (response:any) => {
         if(response.myshop){
+          this.shopHasData = true;
           this.shop = response.myshop;
         }
       })
     }
   }
 
-  enviarFormulario(formulario: NgForm){
-    if(formulario.invalid) return;
-    console.log(this.shop)
-    //Logica para enviar al backend
-    // => ...
-  }
+  
 
 }

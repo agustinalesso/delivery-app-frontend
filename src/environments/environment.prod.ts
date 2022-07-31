@@ -9,5 +9,6 @@ export const environment = {
     measurementId: 'G-2LHTNW694F',
   },
   API_URL: 'http://localhost:1973/',
+  PROFILE_IMAGE_FB_PATH: 'gs://deliverysanjusto.appspot.com/uploads/profile/',
   production: true
 };

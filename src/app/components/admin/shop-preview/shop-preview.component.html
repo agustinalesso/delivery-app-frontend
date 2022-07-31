@@ -1,0 +1,17 @@
+<div class="flex flex-col items-center mb-10" *ngIf="shopData">
+  <div class="w-full h-52 bg-gray-700 relative mb-28">
+    <div class="w-40 h-40 absolute rounded-full bg-gray-800 left-1/2 -ml-20 top-full -mt-20 border-4 shadow-lg border-white"></div>
+  </div>
+  <div class="prose text-center w-10/12 mx-auto">
+    <h1 class="">{{shopData.nombre || '---------'}}</h1>
+    <p>{{shopData.descripcion || '--------------------------------------------------------------------------------------------------------------------------'}}</p>
+    <div class="flex justify-between">
+      <span>Dirección: {{shopData.direccion || '-------------'}}</span>
+      <span>Teléfono: {{shopData.telefono || '-------------'}}</span>
+      <fa-icon [icon]="facebookIcon" size="lg"></fa-icon>
+      <fa-icon [icon]="instagramIcon" size="lg"></fa-icon>
+      <fa-icon [icon]="emailIcon" size="lg"></fa-icon>
+      <fa-icon [icon]="websiteIcon" size="lg"></fa-icon>
+    </div>
+  </div>
+</div>

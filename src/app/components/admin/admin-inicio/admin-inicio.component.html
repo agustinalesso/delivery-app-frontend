@@ -1,93 +1,24 @@
-<div class="grid grid-cols-2 gap-4">
+<div class="w-full" *ngIf="shopHasData">
+    <app-container>
+        <h1>{{shop.nombre}} - Panel de control</h1>
+    </app-container>
+</div>
+<div class="grid grid-cols-2 gap-4" *ngIf="!shopHasData">
     <app-container>
 
         <h2 class="text-3xl">Hola <strong>{{usuario.nombre}}</strong>!</h2>
         <p class="text-gray-400 mt-4">
             Aún no cuentas con los datos necesarios para poder empezar a ofrecer tus productos en SJ Delivery. No te
-            preocupes! La solución es simple: solo debes completar el formulario debajo para completar la información
-            sobre tu negocio. Luego podrás comenzar a crear tus publicaciones!
+            preocupes! La solución es simple: solo debes completar el formulario debajo para enviarnos la información
+            de tu negocio. Luego podrás comenzar a crear tus publicaciones!
         </p>
 
-        <form (submit)="enviarFormulario(formulario)" #formulario="ngForm" class="my-6 p-4 bg-gray-100 rounded-md">
-
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Nombre de tu empresa:</span>
-                </label>
-                <input [(ngModel)]="shop.nombre" name="nombre" required type="text" placeholder="Ej: Cosas Ricas"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Dejanos una descripción:</span>
-                </label>
-                <textarea [(ngModel)]="shop.descripcion" name="descripcion" required class="daisy-textarea daisy-textarea-primary w-full"
-                    placeholder="Describe tu empresa"></textarea>
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Tu dirección:</span>
-                </label>
-                <input [(ngModel)]="shop.direccion" name="direccion" required type="address" placeholder="Ej: Avenida Principal 123, Ciudad, Provincia"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Teléfono:</span>
-                </label>
-                <input [(ngModel)]="shop.telefono" name="telefono" required type="phone" placeholder="Ej: +549-3498-123456"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Sitio web (opcional):</span>
-                </label>
-                <input [(ngModel)]="shop.sitio_web" name="sitio_web" type="text" placeholder="Ej: www.misitio.com"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Facebook (opcional):</span>
-                </label>
-                <input [(ngModel)]="shop.facebook_url" name="facebook_url" type="text" placeholder="Ej: facebook.com/MIUSUARIO"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Instagram (opcional):</span>
-                </label>
-                <input [(ngModel)]="shop.instagram_url" name="instagram_url" type="text" placeholder="Ej: instagram.com/MIUSUARIO"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Correo electrónico (opcional):</span>
-                </label>
-                <input [(ngModel)]="shop.email" type="email" name="email" placeholder="Ej: micorreo@miempresa.com"
-                    class="daisy-input daisy-input-bordered daisy-input-primary w-full" />
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Banner (imágen):</span>
-                </label>
-
-            </div>
-            <div class="daisy-form-control w-full">
-                <label class="daisy-label">
-                    <span class="daisy-label-text">Imágen de perfil:</span>
-                </label>
-
-            </div>
-
-            <button type="submit" class="daisy-btn">Guardar datos</button>
-
-        </form>
+        <app-shop-form [shopData]="shop"></app-shop-form>
 
     </app-container>
     <app-container>
         <div class="daisy-mockup-window border bg-base-300">
-            <div class="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
+            <app-shop-preview></app-shop-preview>
         </div>
     </app-container>
 </div>
