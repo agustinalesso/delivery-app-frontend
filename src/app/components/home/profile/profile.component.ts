@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this._auth.logout().then( r => {
           this._galletita.deleteCookie('_lg');
           this.router.navigate(['home']);
+          this._globalProvider.enviarLogout();
         })
       }
     });

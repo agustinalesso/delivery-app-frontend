@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   toggleSearch: boolean = false;
   toggleMobileMenu: boolean = false;
   userSubscription : Subscription = new Subscription();
+  logoutSubscription: Subscription = new Subscription();
 
   constructor(
     private _galletita: GalletitaService,
@@ -48,12 +49,27 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
           this.usuario = response;
         })
 
+      this.logoutSubscription = this._globalProvider
+        .escucharLogout()
+        .asObservable()
+        .subscribe( response => {
+          if(response){
+            this.esAdministrador = false;
+            this.usuario = {
+              nombre: '',
+              apellido: '',
+              email: '',
+              direccion: ''
+            }
+          }
+        })
     }
 
   }
 
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
+    this.logoutSubscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {

@@ -17,9 +17,12 @@ import { environment } from 'src/environments/environment';
 })
 export class MisDatosComponent implements OnInit {
 
-  @ViewChild('inputFileRef') inputFileRef:ElementRef;
+  @ViewChild('inputFileRef') 
+  inputFileRef:ElementRef;
+  @ViewChild('imageRef') 
+  imageRef:ElementRef;
 
-  usuario: IUsuario;
+  public usuario: IUsuario;
   private pendingUpload: boolean = false;
   private imagePath: string | null;
   private imageFile: File | null;

@@ -8,10 +8,17 @@
     <div class="flex justify-between">
       <span>Dirección: {{shopData.direccion || '-------------'}}</span>
       <span>Teléfono: {{shopData.telefono || '-------------'}}</span>
-      <fa-icon [icon]="facebookIcon" size="lg"></fa-icon>
-      <fa-icon [icon]="instagramIcon" size="lg"></fa-icon>
-      <fa-icon [icon]="emailIcon" size="lg"></fa-icon>
-      <fa-icon [icon]="websiteIcon" size="lg"></fa-icon>
+    </div>
+    
+    <div class="flex justify-between mt-4">
+      <div class="flex gap-4">
+        <fa-icon *ngIf="shopData.facebook_url" [icon]="facebookIcon" [fixedWidth]="true" size="2x" class="cursor-pointer transition-all hover:scale-105"></fa-icon>
+        <fa-icon *ngIf="shopData.instagram_url" [icon]="instagramIcon" [fixedWidth]="true" size="2x" class="cursor-pointer transition-all hover:scale-105"></fa-icon>
+      </div>
+      <div class="flex gap-4">
+        <fa-icon *ngIf="shopData.email" [icon]="emailIcon" [fixedWidth]="true" size="2x" class="cursor-pointer transition-all hover:scale-105"></fa-icon>
+        <fa-icon *ngIf="shopData.sitio_web" [icon]="websiteIcon" [fixedWidth]="true" size="2x" class="cursor-pointer transition-all hover:scale-105"></fa-icon>
+      </div>
     </div>
   </div>
 </div>
